@@ -12,6 +12,21 @@ Using Eventide on Rails, developers can:
 - Send messages to external pub/sub services via Message DB
 - Receive messages from external services via Message DB
 
+Eventide on Rails creates a harmonious transition between autonomous evented services and web applications empowering developers to read and write to and from Message DB, to project event-sourced entities from event streams, and to interact with external services via commands and events using the ActiveRecord Postgres connection. The implementation will allow the co-hosting of the Message DB message store database with a Postgres application database in Rails, and integrates with ActiveRecord migrations to manage the message store data,
+
+CRUD operations in ActiveRecord will be executed in the same database transaction as the recording of events via Eventide's writer, making the recording of events atomic with Rails application database operations.
+
+``` ruby
+user_created_event = UserCreated.build(params)
+ActiveRecord::Base.transaction do
+  user = User.create(params)
+  stream_name = "user-#{user.id}"
+  eventide_writer.write(user_created_event, stream_name)
+end
+```
+
+All foundational Eventide features will be extended to Rails apps, including <a href="http://docs.eventide-project.org/user-guide/reading.html" target="_blank">readers</a>, <a href="http://docs.eventide-project.org/user-guide/writing/message-writer.html" target="_blank">writers</a>, <a href="http://docs.eventide-project.org/user-guide/projection.html" target="_blank">projections</a>, and even <a href="http://docs.eventide-project.org/user-guide/entity-store/" target="_blank">entity stores</a> and <a href="http://docs.eventide-project.org/user-guide/handlers.html" target="_blank">handlers</a>.
+
 ## Status
 
 **In Development**
