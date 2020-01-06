@@ -12,6 +12,12 @@ Using Eventide on Rails, developers can:
 - Send messages to external pub/sub services via Message DB
 - Receive messages from external services via Message DB
 
+## Status
+
+**In Development**
+
+Eventide on Rails is currently in development and will be released in the first quarter of 2020.
+
 ## License
 
 The `eventide-rails` library is released under the [MIT License](https://github.com/eventide-project/eventide-rails/blob/master/MIT-License.txt).
