@@ -31,7 +31,7 @@ All foundational Eventide features will be extended to Rails apps, including <a 
 
 **In Development**
 
-Eventide on Rails is currently in development and will be released in the first quarter of 2020.
+Eventide on Rails is currently in development and will be released after the first quarter of 2020.
 
 ## License
 
